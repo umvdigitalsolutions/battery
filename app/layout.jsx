@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "ANAY INFINITY Pvt Ltd — Batteries",
-  description: "Scalable energy solutions: battery distribution, solar EPC, power backup, and exports.",
+  title: "ANAY INFINITY Pvt Ltd - Batteries",
+  description:
+    "Scalable energy solutions: battery distribution, solar EPC, power backup, and exports.",
   icons: {
     icon: "/infi.jpeg",
     shortcut: "/infi.jpeg",
@@ -23,21 +24,28 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full overflow-x-hidden antialiased`}
     >
-      <head>
-        <title>ANAY INFINITY Pvt Ltd — Batteries</title>
-        <meta name="description" content="Scalable energy solutions: battery distribution, solar EPC, power backup, and exports." />
-        <link rel="icon" href="/infi.jpeg" />
-      </head>
-      <body className="min-h-full flex flex-col">
-        <Header />
-        <main className="flex-1 w-full">{children}</main>
-        <Footer />
+      <body className="min-h-full w-full overflow-x-hidden bg-white text-zinc-900 dark:bg-[#09090B] dark:text-white">
+        <div className="flex min-h-screen w-full flex-col overflow-x-hidden">
+          <Header />
+
+          <main className="w-full flex-1 overflow-x-hidden">
+            {children}
+          </main>
+
+          <Footer />
+        </div>
       </body>
     </html>
   );

@@ -89,25 +89,25 @@ export default function ProductsList() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-white py-12">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-10">
-            <p className="max-w-3xl text-lg leading-8 text-zinc-600">
+      <section className="relative w-full overflow-x-hidden bg-white py-6 sm:py-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="mb-8 sm:mb-10">
+            <p className="justified-copy max-w-3xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
               High-performance energy products designed for reliability,
               efficiency, and long-term performance across residential,
               commercial, industrial, and export markets.
             </p>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
             {products.map((p) => (
               <button
                 key={p.title}
                 type="button"
                 onClick={() => setSelectedProduct(p)}
-                className="group overflow-hidden rounded-[30px] border border-zinc-200 bg-white text-left shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="group w-full overflow-hidden rounded-2xl border border-zinc-200 bg-white text-left shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl sm:rounded-[28px]"
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 overflow-hidden sm:h-64">
                   <Image
                     src={p.img}
                     alt={p.title}
@@ -118,14 +118,16 @@ export default function ProductsList() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                 </div>
 
-                <div className="p-7">
-                  <h3 className="mb-3 text-2xl font-bold text-zinc-900">
+                <div className="p-5 sm:p-7">
+                  <h3 className="balanced-heading mb-3 text-xl font-bold text-zinc-900 sm:text-2xl">
                     {p.title}
                   </h3>
 
-                  <p className="text-sm leading-7 text-zinc-600">{p.desc}</p>
+                  <p className="justified-copy text-sm leading-7 text-zinc-600">
+                    {p.desc}
+                  </p>
 
-                  <span className="mt-7 inline-flex rounded-xl bg-gradient-to-r from-red-600 to-blue-700 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:opacity-90">
+                  <span className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-red-600 to-blue-700 px-4 py-3 text-center text-sm font-semibold text-white shadow-md transition hover:opacity-90 sm:mt-7 sm:w-auto sm:px-6">
                     View Categories
                   </span>
                 </div>
@@ -137,23 +139,23 @@ export default function ProductsList() {
 
       {selectedProduct && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-3 backdrop-blur-sm sm:p-4"
           onClick={() => setSelectedProduct(null)}
         >
           <div
-            className="relative w-full max-w-5xl animate-[popup_0.25s_ease] overflow-hidden rounded-[32px] bg-white shadow-2xl"
+            className="relative max-h-[92vh] w-full max-w-5xl animate-[popup_0.25s_ease] overflow-y-auto rounded-2xl bg-white shadow-2xl sm:rounded-[32px]"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setSelectedProduct(null)}
-              className="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white text-2xl font-bold text-zinc-900 shadow-lg hover:bg-zinc-100"
+              className="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white text-2xl font-bold text-zinc-900 shadow-lg hover:bg-zinc-100 sm:right-4 sm:top-4"
             >
               ×
             </button>
 
             <div className="grid md:grid-cols-2">
-              <div className="relative min-h-[360px] bg-zinc-100">
+              <div className="relative min-h-[220px] bg-zinc-100 sm:min-h-[360px]">
                 <Image
                   src={selectedProduct.img}
                   alt={selectedProduct.title}
@@ -165,22 +167,24 @@ export default function ProductsList() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
 
-              <div className="p-8 md:p-10">
+              <div className="p-5 sm:p-8 md:p-10">
                 <div className="mb-4 inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-sm font-semibold text-blue-700">
                   Product Categories
                 </div>
 
-                <h3 className="text-3xl font-black text-zinc-900">
+                <h3 className="balanced-heading text-2xl font-black text-zinc-900 sm:text-3xl">
                   {selectedProduct.title}
                 </h3>
 
-                <p className="mt-3 text-zinc-600">{selectedProduct.desc}</p>
+                <p className="justified-copy mt-3 text-zinc-600">
+                  {selectedProduct.desc}
+                </p>
 
-                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4">
                   {selectedProduct.categories.map((item) => (
                     <div
                       key={item}
-                      className="group flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white px-5 py-5 text-sm font-semibold text-zinc-800 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg"
+                      className="group flex items-center gap-3 rounded-xl border border-zinc-200 bg-white px-4 py-4 text-left text-sm font-semibold text-zinc-800 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg sm:rounded-2xl sm:px-5 sm:py-5"
                     >
                       <div className="h-3 w-3 rounded-full bg-gradient-to-r from-red-600 to-blue-700" />
                       {item}
@@ -191,7 +195,7 @@ export default function ProductsList() {
                 <div className="mt-8">
                   <a
                     href="/contact"
-                    className="inline-flex rounded-xl bg-gradient-to-r from-red-600 to-blue-700 px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:opacity-90"
+                    className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-red-600 to-blue-700 px-4 py-3 text-center text-sm font-semibold text-white shadow-md transition hover:opacity-90 sm:w-auto sm:px-6"
                   >
                     Enquire Now
                   </a>

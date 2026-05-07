@@ -19,7 +19,7 @@ export default function ContactForm() {
             Send Message
           </button>
         </div>
-        {sent && <div className="text-green-600">Thanks — we'll reply soon.</div>}
+        {sent && <div className="text-green-600">Thanks - we&apos;ll reply soon.</div>}
       </div>
     </form>
   );
